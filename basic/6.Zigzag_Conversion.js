@@ -9,28 +9,56 @@
  * 2. 숫자를 지그재그로로 반복한다(증가 단계 감소 단계 2개로 구분).
  * 3. numRows 위치 별로 글자 순서를 재배열 한다
  *
+ * Runtime : 1ms (Beats:99.90%)
+ * Memory : 59.07MB (Beats: 44.81%)
+ *
  * @param {string} s
  * @param {number} numRows
  * @return {string}
  */
 var convert = function (s, numRows) {
-  if (numRows <= 1) return s;
+  if (numRows === 1 || s.length < numRows) return s;
 
-  let idx = 0;
   let rowList = new Array(numRows).fill("");
-  let row = 0;
-  while (idx < s.length) {
+  let rowIdx = 0;
+
+  let sIdx = 0;
+
+  while (sIdx < s.length) {
     // increase
-    for (; row < numRows - 1 && idx < s.length; row++, idx++) {
-      rowList[row] += s[idx];
+    for (; rowIdx < numRows - 1 && sIdx < s.length; rowIdx++, sIdx++) {
+      rowList[rowIdx] += s[sIdx];
     }
     // decrease
-    for (; row > 0 && idx < s.length; row--, idx++) {
-      rowList[row] += s[idx];
+    for (; rowIdx > 0 && sIdx < s.length; rowIdx--, sIdx++) {
+      rowList[rowIdx] += s[sIdx];
     }
   }
 
   return rowList.join("");
 };
 
-// console.log("result:", convert("AB", 1));
+/**
+ * fix revert
+ * @param {*} s
+ * @param {*} numRows
+ * @returns
+ */
+var convert = function (s, numRows) {
+  if (numRows === 1 || s.length < numRows) return s;
+
+  let rowList = new Array(numRows).fill("");
+  let rowIdx = 0;
+
+  let reverse = false;
+
+  for (let i = 0; i < s.length; i++) {
+    rowList[rowIdx] += s[i];
+
+    // increase or decrease
+    reverse ? rowIdx-- : rowIdx++;
+    if (rowIdx === numRows - 1 || rowIdx === 0) reverse = !reverse;
+  }
+
+  return rowList.join("");
+};
