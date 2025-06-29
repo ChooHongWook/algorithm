@@ -4,20 +4,12 @@
  * @param {number} x
  * @return {number}
  */
-var reverse = function(x) {
-    let usedX = x
-    let isNegative = false
-    if(x < 0){
-        isNegative = true
-        usedX *= -1
-    }
-    let xReverseStr = String(usedX).split('').reverse().join('')
-    let xReverseNum = Number(xReverseStr)
+var reverse = function (x) {
+  let isNegative = x < 0 ? true : false;
+  let usedX = Math.abs(x);
 
-    if(isNegative) xReverseNum *= -1
+  let xReverseNum = Number(String(usedX).split('').reverse().join(''));
 
-    let result = xReverseNum
-
-    if( result < -(2 ** 31) || result > 2 ** 31 ) return 0
-    return result
+  if (xReverseNum > 2 ** 31) return 0;
+  return isNegative ? xReverseNum * -1 : xReverseNum;
 };
