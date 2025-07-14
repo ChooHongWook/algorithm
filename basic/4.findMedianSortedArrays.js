@@ -28,12 +28,12 @@ var findMedianSortedArrays = function (nums1, nums2) {
   for (let i = 0; i <= allLengthmeidan; i++) {
     const t1 = nums1[idx1];
     const t2 = nums2[idx2];
-    if (typeof t2 !== 'number') {
+    if (typeof t2 !== "number") {
       halfMergedArray[i] = t1;
       idx1++;
       continue;
     }
-    if (typeof t1 !== 'number') {
+    if (typeof t1 !== "number") {
       halfMergedArray[i] = t2;
       idx2++;
       continue;
@@ -85,12 +85,12 @@ var findMedianSortedArrays2 = function (nums1, nums2) {
     beforeData = curData;
     const t1 = nums1[idx1];
     const t2 = nums2[idx2];
-    if (typeof t2 !== 'number') {
+    if (typeof t2 !== "number") {
       curData = t1;
       idx1++;
       continue;
     }
-    if (typeof t1 !== 'number') {
+    if (typeof t1 !== "number") {
       curData = t2;
       idx2++;
       continue;
