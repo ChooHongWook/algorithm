@@ -18,3 +18,28 @@ var isPalindrome = function (x) {
   let reverseRightHalf = Array.from(rightHalf).reverse().join("");
   return leftHalf === reverseRightHalf;
 };
+
+/**
+ * optimize
+ * @param {number} x
+ * @return {boolean}
+ */
+var isPalindrome = function (x) {
+  if (x < 0) return false;
+
+  let strX = "" + x;
+
+  let leftIdx = 0;
+  let rightIdx = strX.length - 1;
+
+  while (true) {
+    if (leftIdx >= rightIdx) return true;
+
+    let leftChar = strX[leftIdx];
+    let rightChar = strX[rightIdx];
+    if (leftChar !== rightChar) return false;
+
+    leftIdx++;
+    rightIdx--;
+  }
+};
