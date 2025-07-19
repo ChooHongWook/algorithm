@@ -32,14 +32,11 @@ var isPalindrome = function (x) {
   let leftIdx = 0;
   let rightIdx = strX.length - 1;
 
-  while (true) {
-    if (leftIdx >= rightIdx) return true;
-
-    let leftChar = strX[leftIdx];
-    let rightChar = strX[rightIdx];
-    if (leftChar !== rightChar) return false;
+  while (leftIdx < rightIdx) {
+    if (strX[leftIdx] !== strX[rightIdx]) return false;
 
     leftIdx++;
     rightIdx--;
   }
+  return true;
 };
