@@ -19,6 +19,8 @@ var isPalindrome = function (x) {
   return leftHalf === reverseRightHalf;
 };
 
+// ---------------------------------------------------------------------------------------------------------
+
 /**
  * optimize
  * @param {number} x
